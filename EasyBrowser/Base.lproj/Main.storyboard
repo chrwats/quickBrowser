@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasyBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,120 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cx-XP-ehR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="281"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzz-EH-pl3">
+                                <rect key="frame" x="0.0" y="386" width="375" height="281"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wD3-nm-Fup">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="4yr-QD-aer">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="www." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="KVQ-mp-Dyh">
+                                            <rect key="frame" x="16" y="7" width="209" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="BYZ-38-t0r" id="Xpt-z0-isW"/>
+                                            </connections>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="rewind" id="pDi-b2-3RR">
+                                        <connections>
+                                            <action selector="goBack" destination="1cx-XP-ehR" id="R7h-gt-Erz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="fastForward" id="bHf-rF-php">
+                                        <connections>
+                                            <action selector="goForward" destination="1cx-XP-ehR" id="dzT-gP-6lK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="WOa-af-HR2">
+                                        <connections>
+                                            <action selector="reload" destination="1cx-XP-ehR" id="0oz-d2-0LC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" systemItem="stop" id="cHE-E4-bia">
+                                        <connections>
+                                            <action selector="stopLoading" destination="1cx-XP-ehR" id="aCj-0e-dS1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-MF-lX5">
+                                <rect key="frame" x="0.0" y="345" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="lXe-fK-yUf">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="www." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="Nqb-ON-yGE">
+                                            <rect key="frame" x="16" y="7" width="209" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="BYZ-38-t0r" id="2lI-kM-VTQ"/>
+                                            </connections>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="rewind" id="NgO-p1-qFz">
+                                        <connections>
+                                            <action selector="goBack" destination="kzz-EH-pl3" id="Rla-w2-Qtb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="fastForward" id="cOV-CJ-emJ">
+                                        <connections>
+                                            <action selector="goForward" destination="kzz-EH-pl3" id="yQ6-4d-vNv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="z9t-of-p71">
+                                        <connections>
+                                            <action selector="reload" destination="kzz-EH-pl3" id="ddx-K9-hMk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" systemItem="stop" id="faj-Wt-P2C">
+                                        <connections>
+                                            <action selector="stopLoading" destination="kzz-EH-pl3" id="KgZ-B5-8At"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vEl-MF-lX5" firstAttribute="top" secondItem="1cx-XP-ehR" secondAttribute="bottom" id="0hP-hK-LX7"/>
+                            <constraint firstItem="vEl-MF-lX5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A2N-7v-fX7"/>
+                            <constraint firstItem="1cx-XP-ehR" firstAttribute="top" secondItem="wD3-nm-Fup" secondAttribute="bottom" id="As1-BZ-Ya6"/>
+                            <constraint firstItem="kzz-EH-pl3" firstAttribute="top" secondItem="1cx-XP-ehR" secondAttribute="bottom" constant="41" id="D5U-NL-073"/>
+                            <constraint firstAttribute="trailing" secondItem="vEl-MF-lX5" secondAttribute="trailing" id="UVt-F7-cfm"/>
+                            <constraint firstItem="wD3-nm-Fup" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ueb-xH-ZUg"/>
+                            <constraint firstItem="kzz-EH-pl3" firstAttribute="trailing" secondItem="vEl-MF-lX5" secondAttribute="trailing" id="VJV-g7-8vK"/>
+                            <constraint firstAttribute="trailing" secondItem="kzz-EH-pl3" secondAttribute="trailing" id="coZ-Iy-baj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wD3-nm-Fup" secondAttribute="trailing" constant="-16" id="kUw-0G-2JQ"/>
+                            <constraint firstItem="kzz-EH-pl3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mL0-pW-pzv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1cx-XP-ehR" secondAttribute="bottom" constant="322" id="mxA-Gt-n39"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kzz-EH-pl3" secondAttribute="bottom" id="nfq-QI-3py"/>
+                            <constraint firstItem="kzz-EH-pl3" firstAttribute="leading" secondItem="vEl-MF-lX5" secondAttribute="leading" id="o5k-1a-wKC"/>
+                            <constraint firstItem="wD3-nm-Fup" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="qTd-m7-E59"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1cx-XP-ehR" secondAttribute="trailing" constant="-16" id="rlT-e3-ggQ"/>
+                            <constraint firstItem="1cx-XP-ehR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="sxw-WB-tlS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="KVQ-mp-Dyh" id="X4f-tn-3sl"/>
+                        <outlet property="textField2" destination="Nqb-ON-yGE" id="2iZ-kz-RNk"/>
+                        <outlet property="webView" destination="1cx-XP-ehR" id="7Mj-OD-JtX"/>
+                        <outlet property="webView2" destination="kzz-EH-pl3" id="b3f-sy-ofH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="36" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>
